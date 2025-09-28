@@ -1,0 +1,261 @@
+.stats {
+  padding: 10rem 0;
+  background: linear-gradient(180deg, #16213e 0%, #1a1a2e 50%, #0a0a0a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+}
+
+.stats-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.stats-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.stats-title {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.stats-subtitle {
+  font-size: 1.3rem;
+  color: #b0b0b0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: #00ffff;
+  box-shadow: 
+    0 20px 40px rgba(0, 255, 255, 0.2),
+    0 0 80px rgba(0, 255, 255, 0.1);
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.5));
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #00ffff, #8a2be2, #ff6b6b);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  animation: gradientShift 3s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.stat-label {
+  color: #ffffff;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.stat-description {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.stat-progress {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #00ffff, #8a2be2);
+  border-radius: 2px;
+  transform: translateX(-100%);
+  animation: progressFill 2s ease-out forwards;
+}
+
+@keyframes progressFill {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.stats-visual {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.pulse-ring-1 {
+  width: 200px;
+  height: 200px;
+  animation-delay: 0s;
+}
+
+.pulse-ring-2 {
+  width: 400px;
+  height: 400px;
+  animation-delay: 1.3s;
+}
+
+.pulse-ring-3 {
+  width: 600px;
+  height: 600px;
+  animation-delay: 2.6s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Staggered animation for stat cards */
+.stat-card:nth-child(1) { animation: slideInUp 0.8s ease 0.1s both; }
+.stat-card:nth-child(2) { animation: slideInUp 0.8s ease 0.2s both; }
+.stat-card:nth-child(3) { animation: slideInUp 0.8s ease 0.3s both; }
+.stat-card:nth-child(4) { animation: slideInUp 0.8s ease 0.4s both; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats {
+    padding: 6rem 0;
+  }
+  
+  .stats-title {
+    font-size: 3rem;
+  }
+  
+  .stats-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .pulse-ring-1 { width: 150px; height: 150px; }
+  .pulse-ring-2 { width: 250px; height: 250px; }
+  .pulse-ring-3 { width: 350px; height: 350px; }
+}
